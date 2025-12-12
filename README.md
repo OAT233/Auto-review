@@ -1,4 +1,4 @@
-# Auto-evaluation
+# Auto-review
 
 ## 起因：
   期末了，学校又开始了烦人的评价教师环节。
