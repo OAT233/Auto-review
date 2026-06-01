@@ -1,7 +1,7 @@
 (async function () {
     // --- 配置：极限速度，移除确认等待 ---
-    const INPUT_TIMEOUT_MS = 8000;      // 评分输入框查找容错时间 (8秒)
-    const NEXT_REVIEW_WAIT_MS = 4000;   // 提交后等待进入下一轮的时间 (4秒)
+    const INPUT_TIMEOUT_MS = 8000;      // 评分输入框查找容错时间
+    const NEXT_REVIEW_WAIT_MS = 2000;   // 提交后等待进入下一轮的时间
     const INTERVAL_MS = 200;            // 查找间隔
     
     // --- 辅助函数：等待指定毫秒 ---
@@ -70,7 +70,7 @@
 
         reviewBtn.click();
         
-        // 3. 等待评分输入框出现 (容错 8s)
+        // 3. 等待评分输入框出现
         await wait(500); // 初始等待
         const inputs = await waitForElement(".el-dialog__wrapper.whole input", INPUT_TIMEOUT_MS, INTERVAL_MS, true); 
 
@@ -85,7 +85,7 @@
         // 4. 模拟输入评分
         const nineIndex = Math.floor(Math.random() * groupSize);
         inputs.forEach((input, i) => {
-            const score = i === nineIndex ? 9 : 10;
+            const score = i === nineIndex ? 9.99 : 10;
             realInput(input, score);
         });
 
